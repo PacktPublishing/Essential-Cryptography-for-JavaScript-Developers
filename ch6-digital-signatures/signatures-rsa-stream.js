@@ -78,7 +78,7 @@ function rsaVerifyStream(publicKey, messageStream, signature) {
 // Wrap in an asynchronous IIFE (Immediately-Invoked Function Expression) because we need to use the await keyword
 ;(async function() {
     // Open a readable stream to the file we want to calculate the signature of
-    const filename = 'photo.jpg'
+    const filename = '../test-files/alessandro-porri-yl4y4l86gEk-unsplash.jpg'
     let read = fs.createReadStream(filename)
 
     // Digital signatures are calculated with a private key

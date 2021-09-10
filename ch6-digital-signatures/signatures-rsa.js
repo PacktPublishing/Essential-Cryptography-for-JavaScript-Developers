@@ -52,32 +52,31 @@ function rsaVerify(publicKey, message, signature) {
     )
 }
 
-// Wrap in an asynchronous IIFE (Immediately-Invoked Function Expression) because we need to use the await keyword
-;(async function() {
-    // Message to sign
-    const message = 'I owe Clare $100'
+/* Example usage */
 
-    // Digital signatures are calculated with a private key
-    // With this we're creating a crypto.KeyObject containing the private key (loaded from file)
-    const privateKeyObject = crypto.createPrivateKey(
-        fs.readFileSync('private.pem')
-    )
+// Message to sign
+const message = 'I owe Clare $100'
 
-    // Calculate the signature using RSA and the private key
-    const signature = rsaSign(privateKeyObject, message)
+// Digital signatures are calculated with a private key
+// With this we're creating a crypto.KeyObject containing the private key (loaded from file)
+const privateKeyObject = crypto.createPrivateKey(
+    fs.readFileSync('private.pem')
+)
 
-    // Show the result as a base64-encoded string
-    console.log('Message:', message)
-    console.log('Signature:', signature.toString('base64'))
+// Calculate the signature using RSA and the private key
+const signature = rsaSign(privateKeyObject, message)
 
-    // Load the public key from file, which we'll use to verify the signature
-    const publicKeyObject = crypto.createPublicKey(
-        fs.readFileSync('public.pem')
-    )
+// Show the result as a base64-encoded string
+console.log('Message:', message)
+console.log('Signature:', signature.toString('base64'))
 
-    // Verify the signature
-    const signatureVerified = rsaVerify(publicKeyObject, message, signature)
+// Load the public key from file, which we'll use to verify the signature
+const publicKeyObject = crypto.createPublicKey(
+    fs.readFileSync('public.pem')
+)
 
-    // Show the result
-    console.log('Signature valid:', signatureVerified)
-})()
+// Verify the signature
+const signatureVerified = rsaVerify(publicKeyObject, message, signature)
+
+// Show the result
+console.log('Signature valid:', signatureVerified)
