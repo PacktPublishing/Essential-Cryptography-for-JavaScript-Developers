@@ -33,7 +33,7 @@ function sha256DigestStream(read, encoding) {
 const fs = require('fs')
 /**
  * Calculates the SHA-256 file of a file from disk and prints it encoded as hex.
- * @param {string} path Path to the file to hash
+ * @param {Promise<string>} path Path to the file to hash
  */
 async function hashFile(path) {
     // Open a file and create a readable stream to that

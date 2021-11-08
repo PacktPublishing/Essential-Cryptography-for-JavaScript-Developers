@@ -9,7 +9,7 @@ const randomBytes = promisify(crypto.randomBytes)
 /**
  * Calculates the hash of a passphrase using scrypt and returns the string to store in the database.
  * @param {string} passphrase Passphrase to hash
- * @returns {string} The hashes passphrase to store in the database.
+ * @returns {Promise<string>} The hashes passphrase to store in the database.
  */
 async function scryptHash(passphrase) {
     // Generate a 16-byte random salt

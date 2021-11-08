@@ -12,7 +12,7 @@ const randomBytes = util.promisify(crypto.randomBytes)
  * Returns an object containing the encrypted message as well as the wrapped (encrypted) symmetric key.
  * @param {crypto.KeyObject} publicKey Public key object
  * @param {string} plaintext The message to encrypt, as a string
- * @returns { {encrypted: Buffer, wrappedKey: Buffer} } Object containing the encrypted message as well as the wrapped key
+ * @returns { Promise<{encrypted: Buffer, wrappedKey: Buffer}> } Object containing the encrypted message as well as the wrapped key
  */
 async function hybridEncrypt(publicKey, plaintext) {
     // Generate a new symmetric key as a random sequence of bytes

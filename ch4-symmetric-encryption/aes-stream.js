@@ -9,7 +9,7 @@ const randomBytes = require('util').promisify(crypto.randomBytes)
  * @param {Buffer} key The 256-bit key used to encrypt the message
  * @param {import('stream').Readable} source Readable stream to the input (plaintext)
  * @param {import('stream').Writable} destination Writable stream to the destination, where the output (ciphertext) will be written
- * @returns {Buffer} The authentication tag for the ciphertext
+ * @returns {Promise<Buffer>} The authentication tag for the ciphertext
  */
 async function encrypt(key, source, destination) {
     // Generate a random IV
@@ -50,6 +50,7 @@ async function encrypt(key, source, destination) {
  * @param {Buffer} tag The authentication tag for this ciphertext
  * @param {import('stream').Readable} source Readable stream to the input (ciphertext)
  * @param {import('stream').Writable} destination Writable stream to the destination, where the output (plaintext) will be written
+ * @returns {Promise<void>} Promise that resolves with no value once the work is done
  */
 async function decrypt(key, tag, source, destination) {
     // Read the first 12 bytes from the encrypted stream, which are the IV

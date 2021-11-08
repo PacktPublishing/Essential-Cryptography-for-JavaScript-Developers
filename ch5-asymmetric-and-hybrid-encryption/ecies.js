@@ -18,7 +18,7 @@ const randomBytes = promisify(crypto.randomBytes)
  * @param {crypto.KeyObject} alicePrivateKey Alice's private key
  * @param {crypto.KeyObject} bobPublicKey Bob's public key
  * @param {string} message Message to encrypt
- * @returns {Buffer} Message that Alice needs to send to Bob
+ * @returns {Promise<Buffer>} Message that Alice needs to send to Bob
  */
  async function AliceEncrypt(alicePrivateKey, bobPublicKey, message) {
     // Alice calculates the shared secret using her own private key and Bob's public key

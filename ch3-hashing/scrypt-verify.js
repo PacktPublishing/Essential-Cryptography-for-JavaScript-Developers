@@ -8,7 +8,7 @@ const scrypt = require('util').promisify(crypto.scrypt)
  * 
  * @param {string} stored The hash as retrieved from the database (which contains the salt as prefix)
  * @param {string} passphrase The passphrase to verify
- * @returns {boolean} Returns true if the passphrase matches
+ * @returns {Promise<boolean>} Returns true if the passphrase matches
  */
 async function scryptVerify(stored, passphrase) {
     // Decode the stored value from base64. The first 16 bytes which are the salt, the rest is the passphrase

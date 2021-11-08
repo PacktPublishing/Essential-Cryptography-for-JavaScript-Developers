@@ -8,7 +8,7 @@ const randomBytes = require('util').promisify(crypto.randomBytes)
  * Encrypts the plaintext message using the given key with ChaCha20-Poly1305
  * @param {Buffer} key A 256-bit key
  * @param {string} plaintext The message to encrypt, as a string
- * @returns {Buffer} The ciphertext (with the nonce and authentication tag prepended)
+ * @returns {Promise<Buffer>} The ciphertext (with the nonce and authentication tag prepended)
  */
 async function encrypt(key, plaintext) {
     // Generate a random nonce of 12 bytes
