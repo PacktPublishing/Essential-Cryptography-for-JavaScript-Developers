@@ -42,7 +42,7 @@ function keyFromPem(keyType, pem, algorithm, exportable, usages) {
 
     // Import the key
     // Note that this returns a Promise
-    return crypto.subtle.importKey(
+    return window.crypto.subtle.importKey(
         format,
         keyData,
         algorithm,

@@ -27,7 +27,7 @@ async function pemFromKey(keyType, key) {
     }
 
     // Export the key, DER-encoded, in an ArrayBuffer object
-    const keyData = await crypto.subtle.exportKey(format, key)
+    const keyData = await window.crypto.subtle.exportKey(format, key)
     // Merge the header, the base64-encoded key, and the footer, separated by newlines
     const pem = [
         header,
