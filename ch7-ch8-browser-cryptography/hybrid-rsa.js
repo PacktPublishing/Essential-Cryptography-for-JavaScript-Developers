@@ -9,7 +9,7 @@ import {Encode} from 'arraybuffer-encoding/base64/standard'
     const plaintext = encoder.encode(plaintextMessage)
 
     // Obtain a RSA key pair, containing the public and private keys
-    const keyPair = await NewRSAKeyPair()
+    const keyPair = await newRSAKeyPair()
 
     // Encrypt the message using hybrid encryption, and obtain both the ciphertext (encrypted message) and the wrapped key (encrypted key)
     const {wrappedKey, encrypted} = await hybridEncrypt(keyPair.publicKey, plaintext)
@@ -191,7 +191,7 @@ function rsaKeyUnwrap(privateKey, wrappedKey) {
  *
  * @returns {Promise<CryptoKeyPair>} Key pair object
  */
-function NewRSAKeyPair() {
+function newRSAKeyPair() {
     // Generate a new 4096-bit key pair for encryption with RSA-OAEP
     return window.crypto.subtle.generateKey(
         // Options for the algorithm to use

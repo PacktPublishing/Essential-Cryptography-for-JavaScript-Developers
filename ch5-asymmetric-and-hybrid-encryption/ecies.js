@@ -43,7 +43,7 @@ const randomBytes = promisify(crypto.randomBytes)
 /**
  * Bob uses this function to decrypt the message he received from Alice.
  * 
- * This function calculates the shared secret using ECDH, with Bob's private key and Alice's public key. Then it uses the same ECIES algorithm as AliceEncrypt does, to decrypt the data.
+ * This function calculates the shared secret using ECDH, with Bob's private key and Alice's public key. Then it uses the same ECIES algorithm as AliceEncrypt does to decrypt the data.
  * 
  * @param {crypto.KeyObject} bobPrivateKey Bob's private key
  * @param {crypto.KeyObject} alicePublicKey Alice's public key
