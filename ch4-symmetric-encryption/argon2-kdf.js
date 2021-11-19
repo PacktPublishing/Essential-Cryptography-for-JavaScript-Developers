@@ -9,7 +9,7 @@ const argon2 = require('argon2')
  * @param {number} length Number of bytes to return from the hash (should be 16 for a 128-bit key or 32 for a 256-bit key)
  * @returns {Promise<Buffer>} The symmetric key derived with Argon2
  */
-function deriveKey(passphrase, salt, length) {
+async function deriveKey(passphrase, salt, length) {
     try {
         // Parameters for argon2
         const params = {
@@ -29,7 +29,8 @@ function deriveKey(passphrase, salt, length) {
             version: 0x13,
         }
         // Derive and return the key
-        return argon2.hash(passphrase, params)
+        const result = await argon2.hash(passphrase, params)
+        return result
     }
     catch (err) {
         console.error('An internal error occurred: ', err)

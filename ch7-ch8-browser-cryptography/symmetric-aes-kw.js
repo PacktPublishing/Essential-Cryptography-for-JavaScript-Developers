@@ -90,7 +90,6 @@ Example result (will be different every time):
  * @returns {Promise<CryptoKey>} Object containing the symmetric key derived from the passphrase
  */
 async function deriveKey(passphrase, salt) {
-    console.log(passphrase, salt)
     // Derive a 32-byte key from a passphrase using argon2id (with the method imported from the hash-wasm NPM module)
     const rawKey = await argon2id({
         password: passphrase,
