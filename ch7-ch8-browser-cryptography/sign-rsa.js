@@ -32,9 +32,11 @@ import {Encode} from 'arraybuffer-encoding/base64/standard'
     // Calculate the signature using RSA and PKCS#1 v1.5 padding
     // Use the private part of the key to sign
     const signature = await window.crypto.subtle.sign(
-        // Name of the algorithm and RSA padding
-        // This uses PKCS#1 v1.5
-        // For RSA-PSS, look at https://developer.mozilla.org/en-US/docs/Web/API/RsaPssParams
+        // Name of the algorithm and RSA padding. This uses PKCS#1 v1.5
+        // For RSA-PSS, you would pass a dictionary like this one instead:
+        // `{name: 'RSA-PSS', saltLength: 32}`
+        // The value of saltLength should match the length in bytes of the digest:
+        // for example, when using SHA-256, the length is 32 (bytes)
         {name: 'RSASSA-PKCS1-v1_5'},
         // Signatures are calculated with the private key
         keyPair.privateKey,
@@ -48,6 +50,7 @@ import {Encode} from 'arraybuffer-encoding/base64/standard'
     // Using the public part of the key, verify the signature
     const signatureValid = await window.crypto.subtle.verify(
         // Name of the algorithm and RSA padding
+        // This is the same dictionary passed to the sign method
         {name: 'RSASSA-PKCS1-v1_5'},
         // Public key, used to verify the signature
         keyPair.publicKey,

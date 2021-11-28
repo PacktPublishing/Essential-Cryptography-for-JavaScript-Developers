@@ -58,9 +58,10 @@ async function deriveSecretKey(privateKey, publicKey, salt) {
     )
 
     // Append the salt to the ECDH result
-    const base = new Uint8Array(ecdhResult.byteLength + salt.byteLength)
-    base.set(ecdhResult)
-    base.set(salt, ecdhResult.byteLength)
+    const base = new Uint8Array([
+        ...new Uint8Array(ecdhResult),
+        ...salt
+    ])
 
     // Stretch the result of the ECDH exchange with the salt by calculating a SHA-256 hash
     const rawKey = await window.crypto.subtle.digest('SHA-256', base)

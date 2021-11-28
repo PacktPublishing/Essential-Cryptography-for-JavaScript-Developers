@@ -58,7 +58,7 @@ function deriveSecretKey(privateKey, publicKey) {
  * Generate a new Elliptic Curve key pair, creating a new random P-256 key every time. The key can be used to perform ECDH key exchanges.
  * @returns {Promise<CryptoKeyPair>} Key pair object
  */
- function newKeyPair() {
+function newKeyPair() {
     // Generate a new P-256 key pair for ECDH
     return window.crypto.subtle.generateKey(
         // Options for the algorithm to use
