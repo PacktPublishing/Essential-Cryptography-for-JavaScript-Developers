@@ -62,7 +62,7 @@ function hybridDecrypt(privateKey, wrappedKey, message) {
     )
 
     // Encrypt the message using hybrid encryption, and obtain both the ciphertext (encrypted message) and the wrapped key (encrypted key)
-    const {wrappedKey, encrypted} = await hybridEncrypt(publicKeyObject, plaintext)
+    const {encrypted, wrappedKey} = await hybridEncrypt(publicKeyObject, plaintext)
 
     // You will need to transmit to the other party both the ciphertext and the wrapped key
     // Showing them here encoded as base64
