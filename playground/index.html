@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeSwing</title>
+</head>
+<body>
+
+<main class="space-y-3 p-2">
+    <h1 class="text-3xl font-bold">Web playground</h1>
+    <p>This <a href="https://marketplace.visualstudio.com/items?itemName=codespaces-Contrib.codeswing" class="underline">CodeSwing</a> is a playground for testing JavaScript code executed in the web browser. It supports the Web Crypto APIs and it imports third-party modules from NPM automatically.</p>
+    <h2 class="text-xl font-bold">How it works</h2>
+    <ol class="list-decimal ml-8">
+        <li>Write your code in the <code class="text-sm text-blue-800">script.mjs</code> file in this folder.</li>
+        <li>The CodeSwing will automatically update on every change.</li>
+        <li>Use <code class="text-sm text-blue-800">console.log</code> to display your result. It will appear in the box below (and in your browser's Developer Tools, if running in the Web)</li>
+    </ol>
+    <h2 class="text-xl font-bold">Result</h2>
+    <section class="w-100 text-sm m-2 p-2 border text-gray-600 space-y-1" id="out"></section>
+</main>
+
+<script src="https://cdn.tailwindcss.com/"></script>
+<script type="text/javascript">
+function monkeyPatchConsole(obj, property) {
+    const old = obj[property]
+    obj[property] = function(...args) {
+        const str = args
+            .map((el) => {
+                if (typeof el == 'object') {
+                    return el.constructor.name + ': ' + JSON.stringify(el)
+                } else {
+                    return el
+                }
+            })
+            .join('\t')
+        const child = document.createElement('pre')
+        child.className = 'whitespace-pre-wrap break-all'
+        //document.getElementById('out').innerHTML += str + '\n'
+        child.innerText = str
+        document.getElementById('out').appendChild(child)
+        old(...args)
+    }
+}
+monkeyPatchConsole(console, 'log')
+</script>
+</body>
+</html>

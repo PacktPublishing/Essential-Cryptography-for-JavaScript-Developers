@@ -1,0 +1,7 @@
+{
+    "scripts": [
+        "hash-wasm",
+        "arraybuffer-encoding"
+    ],
+    "scriptType": "module"
+}
