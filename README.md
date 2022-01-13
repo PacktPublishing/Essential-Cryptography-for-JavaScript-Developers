@@ -1,2 +1,2 @@
-# Practical-Cryptography-in-Node.js
-Practical Cryptography in Node.js, published by Packt
+# Essential Cryptography for JavaScript Developers
+Essential Cryptography for JavaScript Developers, published by Packt
