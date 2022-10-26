@@ -59,3 +59,7 @@ Installation  of node.js and visual studio code editor is required.
 ***Alessandro Segala*** is a product manager at Microsoft working on developer tools. A software engineer at heart, he has over a decade of experience building full stack web applications, having worked as a professional developer as well as contributing to and maintaining various open source projects. In addition to writing about software development on his blog, Alessandro had his first book, Svelte 3 Up and Running, published by Packt in 2020.
 
 
+### Download a free PDF
+
+ <i>If you have already purchased a print or Kindle version of this book, you can get a DRM-free PDF version at no cost.<br>Simply click on the link to claim your free PDF.</i>
+<p align="center"> <a href="https://packt.link/free-ebook/9781801075336">https://packt.link/free-ebook/9781801075336 </a> </p>
